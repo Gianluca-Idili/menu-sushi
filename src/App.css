@@ -1,0 +1,77 @@
+
+.container {
+  padding-top: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.cartDiv {
+  margin-top: 50px;
+  width: 300px;
+  height: 100%;
+  background: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0) 80%), url(./images/dragofinale.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow-y: auto;
+}
+
+.cartDiv ul {
+  margin: 0;
+  padding: 0;
+}
+
+.cartDiv li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cartDiv p {
+  margin: 0;
+  padding: 0;
+}
+
+.cartDiv button {
+  display: block;
+  margin: 10px auto;
+}
+
+@media (max-width: 767px) {
+  .cartDiv {
+    width: 100%;
+    height: 100%;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+}
+
+
+
+
+
+
+ .imgCard{
+  object-fit: cover;
+ }
+ .cart-container {
+  width: 300px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+}
+
+.alert {
+  font-weight: bold;
+  background-color: rgb(40, 248, 40);
+}
