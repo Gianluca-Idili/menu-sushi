@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import './App.css';
+import * as Icon from 'react-bootstrap-icons';
+
+
 import Navbar from './components/navbar';
 import Card from './components/card';
 import Cart from './components/cart';
@@ -13,14 +17,24 @@ import shrimp from './images/s7.jpg';
 class App extends Component {
   state = {
     cards: [
-      { id: 0, name: "California", price: 1.99, image: california, quantity: 0 },
-      { id: 1, name: "Dragon", price: 1.99, image: dragon, quantity: 0 },
-      { id: 2, name: "Dynamite", price: 1.99, image: dynamite, quantity: 0 },
-      { id: 3, name: "Philadephia", price: 1.99, image: philadephia, quantity: 0 },
-      { id: 4, name: "Rainbow", price: 1.99, image: rainbow, quantity: 0 },
-      { id: 5, name: "Shrimp", price: 1.99, image: shrimp, quantity: 0 },
+      { id: 0, name: "Alghero", price: 3.99, image: california, quantity: 0 },
+      { id: 1, name: "Red Dragon", price: 1.99, image: dragon, quantity: 0 },
+      { id: 2, name: "Salmon", price: 4.99, image: dynamite, quantity: 0 },
+      { id: 3, name: "Grand Avocado", price: 10.49, image: philadephia, quantity: 0 },
+      { id: 4, name: "Mix degustation", price: 14.99, image: rainbow, quantity: 0 },
+      { id: 5, name: "Big vision", price: 13.99, image: shrimp, quantity: 0 },
     ],
-    cart: []
+    cart: [],
+    isCartOpen: false // toggle
+  }
+
+ 
+  
+
+  toggleCart = () => {
+    this.setState(prevState => ({
+      isCartOpen: !prevState.isCartOpen
+    }));
   }
 
   handleDelete = card => {
@@ -57,12 +71,12 @@ class App extends Component {
   render() {
     return (
       <>
-        <Navbar />
+        <Navbar onToggleCart={this.toggleCart} />
         <div className='container'>
           <hr />
           <div className='row'>
             <div className='col-md-10'>
-          <h1 className='m-2'>Cosa desideri ordinare?</h1>
+              <h1 className='m-2'>Cosa desideri ordinare?</h1>
               <div className='row'>
                 {this.state.cards.map(card => (
                   <Card
@@ -75,11 +89,13 @@ class App extends Component {
               </div>
             </div>
             <div className='col-md-2'>
-            <Cart
-            card={this.state.cards}
-            onResetCart={this.handleReset}
-            onSendOrder={this.handleSendOrder}
-            />
+              {this.state.isCartOpen && (
+                <Cart
+                  card={this.state.cards}
+                  onResetCart={this.handleReset}
+                  onSendOrder={this.handleSendOrder}
+                />
+              )}
             </div>
           </div>
         </div>
